@@ -3,7 +3,7 @@
 $dbhost = "localhost";
 $dbname = "084digital_db";
 $username = "root";
-$password = "root";
+$password = "";
 
 $db = new PDO("mysql:host=$dbhost; dbname=$dbname", $username, $password);
 
@@ -59,8 +59,6 @@ function getAuthorAvatarByIdForComment($id){
         } 
     }
 }
-
-
 
 function getAuthorByIdForComment($id){
     global $db;
