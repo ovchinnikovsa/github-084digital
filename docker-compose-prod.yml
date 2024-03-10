@@ -1,0 +1,40 @@
+version: '3'
+
+services:
+  mb_php:
+    build: ./docker/php
+    volumes:
+      - './src:/var/www/html'
+      - "./docker/conf/db.ini:/var/www/html/db.ini:rw"
+    depends_on:
+      - mb_mariadb
+    networks:
+      - titleSite
+
+  mb_nginx:
+    image: nginx:latest
+    ports:
+      - 8085:80
+    volumes:
+      - './src:/var/www/html'
+      - './docker/nginx/conf.d:/etc/nginx/conf.d'
+    networks:
+      - titleSite
+
+  mb_mariadb:
+      image: mariadb:10.9
+      ports:
+        - 3313:3306
+      volumes:
+        - ./docker/mariadb/database:/var/lib/mysql
+        - ./docker/mariadb/dump:/var/backups:rw
+      env_file:
+      - ./docker/conf/db.ini
+      networks:
+      - titleSite
+
+networks:
+  titleSite:
+    external: true
+    name: titleSite
+    driver: bridge

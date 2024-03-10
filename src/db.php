@@ -1,11 +1,20 @@
 <?php
 
-$dbhost = "localhost";
-$dbname = "084digital_db";
-$username = "root";
-$password = "";
+error_reporting(0);
 
-$db = new PDO("mysql:host=$dbhost; dbname=$dbname", $username, $password);
+$ini_file = parse_ini_file(__DIR__ . '/db.ini');
+
+$db_host = $ini_file['DB_HOST'];
+$db_name = $ini_file['MARIADB_DATABASE'];
+$db_user = $ini_file['MARIADB_USER'];
+$db_pass = $ini_file['MARIADB_PASSWORD'];
+$db_dns = 'mysql:host=' . $db_host . ';dbname=' . $db_name;
+
+try {
+    $db = new PDO($db_dns, $db_user, $db_pass);
+} catch (PDOException $e) {
+    die('Error, try again later');
+}
 
 function getArticles(){
     global $db;

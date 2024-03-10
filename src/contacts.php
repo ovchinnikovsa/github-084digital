@@ -10,8 +10,6 @@
             <div class="contacts-right">
                 <a href="#">ov4innikovsa@yandex.ru</a>
                 <a href="https://t.me/ovchiegram">Telegram</a>
-                <a href="https://vk.com/sergeyovch">Vkontakte</a>
-                <a href="https://www.instagram.com/ovchiegram">Instagram</a>
             </div> 
         </div>
 

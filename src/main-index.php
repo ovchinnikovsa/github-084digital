@@ -3,7 +3,7 @@
                 <div class="main-div">
             <?php
                 
-                viewUpdate($_GET["id"]);
+                // viewUpdate($_GET["id"]);
 
                 $articleArray = getArticles();
                 foreach ($articleArray as $articleSingle) { ?>
